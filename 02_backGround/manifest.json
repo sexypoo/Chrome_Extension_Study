@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Message Passing Example",
+    "version": "1.0",
+    "description": "A Chrome Extension example for message passing between content script and background script.",
+    "permissions": ["scripting", "activeTab"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon16.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
