@@ -1,0 +1,44 @@
+{
+    "name": "인터넷 기사 분석기",
+    "description": "AI로 기사 정치 성향 · 신뢰도 · 가짜 뉴스 확률을 즉시 표시합니다.",
+    "version": "0.1.0",
+    "manifest_version": 3,
+  
+    "icons": {
+      "16":  "icons/icon16.png",
+      "32":  "icons/icon32.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+  
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "http://localhost:8000/*"
+    ],
+  
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["vendor/readability.js", "content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+  
+    "action": {
+      "default_popup": "popup/popup.html"
+    },
+  
+    "options_ui": {
+      "page": "popup/popup.html",
+      "open_in_tab": false
+    }
+  }

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "웹사이트 신뢰도 측정기",
+  "version": "1.0",
+  "description": "웹사이트의 신뢰도를 간단히 분석해주는 Chrome 확장 프로그램입니다.",
+  "permissions": ["activeTab", "scripting","storage","alarms"],
+  "host_permissions": ["<all_urls>","https://api.whoisxmlapi.com/*","https://safebrowsing.googleapis.com/*","https://example.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
